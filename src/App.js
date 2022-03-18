@@ -1,6 +1,6 @@
 import "./App.css";
 import { connect } from "react-redux";
-import { deletePost } from "./actions/postsActions";
+import { deletePost } from "./ducks";
 
 function App(props) {
   console.log(props);
