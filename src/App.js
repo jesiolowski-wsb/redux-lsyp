@@ -1,5 +1,6 @@
 import "./App.css";
 import { connect } from "react-redux";
+import { deletePost } from "./actions/postsActions";
 
 function App(props) {
   console.log(props);
@@ -10,7 +11,7 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     posts: state.posts,
   };
@@ -19,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     deletePost: (id) => {
-      dispatch({ type: "DELETE_POST", id });
+      dispatch(deletePost(id));
     },
   };
 };
