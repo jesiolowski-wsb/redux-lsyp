@@ -3,14 +3,20 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./rootReducer";
+import createSagaMiddleware from "redux-saga";
+import bootstrap from "./sagas";
 
+const sagaMiddleware = createSagaMiddleware();
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancers(applyMiddleware(sagaMiddleware))
 );
+
+sagaMiddleware.run(bootstrap);
 
 ReactDOM.render(
   <React.StrictMode>
