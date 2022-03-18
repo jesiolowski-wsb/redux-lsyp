@@ -6,9 +6,9 @@ function App(props) {
   return <div className="App"></div>;
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    posts: state.posts,
+    posts: state.posts.find((post) => post.id === ownProps.postId),
   };
 };
 

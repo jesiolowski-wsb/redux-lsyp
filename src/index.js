@@ -12,7 +12,7 @@ const store = createStore(rootReducer);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <App postId={4} />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
